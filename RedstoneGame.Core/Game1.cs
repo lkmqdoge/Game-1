@@ -15,7 +15,7 @@ public class Game1 : GameCore
     private readonly Label2D _label = new();
     private SpriteFont _font;
 
-    public Game1()
+    public Game1() : base()
     {
         InputManager.AddAction(
             new InputAction("debug_exit", [ Keys.Escape ])
@@ -31,6 +31,7 @@ public class Game1 : GameCore
 
     protected override void LoadContent()
     {
+        base.LoadContent();
         _font = Content.Load<SpriteFont>("Fonts/debug");
         _label.Font = _font;
         _label.Text = "Hello world";
@@ -38,20 +39,18 @@ public class Game1 : GameCore
 
     protected override void Update(GameTime gameTime)
     {
-        InputManager.Update();
+        base.Update(gameTime); // update input 
 
         if (InputManager.IsActionJustPressed("debug_exit"))
             Exit();
-
-        base.Update(gameTime);
     }
 
     protected override void Draw(GameTime gameTime)
     {
+        base.Draw(gameTime);
         SpriteBatch.Begin();
         _label.Draw(SpriteBatch);
         SpriteBatch.End();
 
-        base.Draw(gameTime);
     }
 }

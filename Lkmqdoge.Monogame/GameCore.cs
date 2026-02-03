@@ -17,6 +17,7 @@ public class GameCore : Game
 
     public GameCore()
     {
+        InputManager = new();
         Graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
